@@ -85,6 +85,7 @@ void setup(){
         String html = "<!DOCTYPE html><html><head>";
         html += "<meta charset='UTF-8'>";
         html += "<title>ESP8266 控制器</title>";
+        html += "<p>學號：1411232069 陳國翔</p>";
         html += "<style>";
         html += "body{font-family:Arial;text-align:center;background:#f0f0f0;margin:40px;}";
         html += ". container{background:white;padding:30px;border-radius:10px;max-width:600px;margin:0 auto;box-shadow:0 2px 10px rgba(0,0,0,0.1);}";
@@ -116,9 +117,9 @@ void setup(){
 
         // 溫濕度顯示區域
         html += "<div class='sensor-data'>";
-        html += "<h2>溫濕度顯示區域</h2>";
-        html += "<div id='dhtDisplay' class='manual-display'>按下可得到當前的數據</div>";
-        html += "<button class='dht-btn' onclick='updateDHTData()'>顯示溫度、濕度</button>";
+        html += "<h2>溫濕度顯示區域 (自動刷新: 2秒)</h2>";
+        html += "<div id='dhtDisplay' class='manual-display'>加載中...</div>";
+        html += "<button class='dht-btn' onclick='updateDHTData()'>立即刷新</button>";
         html += "</div>";
 
         // LED控制
@@ -174,6 +175,8 @@ void setup(){
         html += "  fetch('/lcd_custom',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:'text='+encodeURIComponent(text)})";
         html += "  .then(()=>document.getElementById('customText').value='');";
         html += "}";
+        html += "updateDHTData();";
+        html += "setInterval(updateDHTData, 2000);";
         html += "</script></body></html>";
 
         server. send(200, "text/html", html);
