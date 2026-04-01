@@ -1,8 +1,8 @@
 # PlatformIO
 .pio/
 .vscode/
-.pioenvs
-.piolibdeps
+.pioenvs/
+.piolibdeps/
 .clang_complete
 .gcc-flags.json
 
@@ -29,6 +29,10 @@
 .vscode/ipch
 .idea/
 *.iml
+
+# CLion / CMake build directories
+cmake-build-*/
+out/
 
 # Compilation database
 compile_commands.json
